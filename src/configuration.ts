@@ -2,14 +2,18 @@ import { Configuration, App } from '@midwayjs/core';
 import * as koa from '@midwayjs/koa';
 import * as validate from '@midwayjs/validate';
 import * as info from '@midwayjs/info';
+import * as orm from '@midwayjs/typeorm';
+import * as swagger from '@midwayjs/swagger';
 import { join } from 'path';
 // import { DefaultErrorFilter } from './filter/default.filter';
 // import { NotFoundFilter } from './filter/notfound.filter';
-import { ReportMiddleware } from './middleware/report.middleware';
+import { AuthMiddleware } from './middleware/auth.middleware';
 
 @Configuration({
   imports: [
     koa,
+    swagger,
+    orm,
     validate,
     {
       component: info,
@@ -24,7 +28,7 @@ export class MainConfiguration {
 
   async onReady() {
     // add middleware
-    this.app.useMiddleware([ReportMiddleware]);
+    this.app.useMiddleware([AuthMiddleware]);
     // add filter
     // this.app.useFilter([NotFoundFilter, DefaultErrorFilter]);
   }
