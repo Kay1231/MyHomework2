@@ -20,9 +20,6 @@ export class BlindBoxItem {
   @Column('decimal', { precision: 5, scale: 2 })
   probability: number;
 
-  @Column()
-  rarity: string; // 稀有度: 普通、稀有、史诗、传说
-
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
 
