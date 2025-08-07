@@ -7,14 +7,15 @@ import * as swagger from '@midwayjs/swagger';
 import { join } from 'path';
 // import { DefaultErrorFilter } from './filter/default.filter';
 // import { NotFoundFilter } from './filter/notfound.filter';
-import { AuthMiddleware } from './middleware/auth.middleware';
-
+import { ReportMiddleware } from './middleware/report.middleware';
+import * as crossDomain from '@midwayjs/cross-domain';
 @Configuration({
   imports: [
     koa,
     swagger,
     orm,
     validate,
+    crossDomain,
     {
       component: info,
       enabledEnvironment: ['local'],
@@ -23,12 +24,13 @@ import { AuthMiddleware } from './middleware/auth.middleware';
   importConfigs: [join(__dirname, './config')],
 })
 export class MainConfiguration {
+
   @App('koa')
   app: koa.Application;
 
   async onReady() {
     // add middleware
-    this.app.useMiddleware([AuthMiddleware]);
+    this.app.useMiddleware([ReportMiddleware]);
     // add filter
     // this.app.useFilter([NotFoundFilter, DefaultErrorFilter]);
   }

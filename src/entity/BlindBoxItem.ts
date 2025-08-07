@@ -1,5 +1,11 @@
 // src/entity/BlindBoxItem.ts
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 import { BlindBox } from './BlindBox';
 import { Order } from './Order';
 
