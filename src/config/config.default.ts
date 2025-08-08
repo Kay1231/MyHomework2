@@ -4,6 +4,7 @@ import { User } from '../entity/user.entity'; // 明确导入实体
 import { Box } from '../entity/box.entity';
 import { BoxItem } from '../entity/box-item.entity';
 import { UserBox } from '../entity/user-box.entity';
+import { Comment } from '../entity/comment.entity';
 
 export default {
   keys: '1753998171219_5255',
@@ -18,7 +19,7 @@ export default {
         synchronize: true,
         logging: true,
         // 明确列出所有实体
-        entities: [User, Box, BoxItem, UserBox],
+        entities: [User, Box, BoxItem, UserBox, Comment],
       },
     },
   },

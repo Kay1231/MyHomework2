@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { UserBox } from './user-box.entity';
+import { Comment } from './comment.entity';
 
 @Entity()
 export class User {
@@ -14,4 +15,8 @@ export class User {
 
   @OneToMany(() => UserBox, userBox => userBox.user)
   userBoxes: UserBox[];
+
+  @OneToMany(() => Comment, comment => comment.user)
+comments
+: Comment[];
 }

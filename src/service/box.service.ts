@@ -16,10 +16,13 @@ export class BoxService {
 
   async getBoxDetail(id: number) {
     return this.boxModel.findOne({
-      where: { id },
-      relations: ['items'],
-    });
+    where
+: { id },
+    relations
+: ['items', 'comments', 'comments.user'], // 添加comments关系
+  });
   }
+  
 
   // 在 BoxService 类中添加
 }
