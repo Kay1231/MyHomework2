@@ -4,11 +4,13 @@ import * as validate from '@midwayjs/validate';
 import * as info from '@midwayjs/info';
 import * as orm from '@midwayjs/typeorm';
 import * as swagger from '@midwayjs/swagger';
-import { join } from 'path';
 // import { DefaultErrorFilter } from './filter/default.filter';
 // import { NotFoundFilter } from './filter/notfound.filter';
 import { ReportMiddleware } from './middleware/report.middleware';
 import * as crossDomain from '@midwayjs/cross-domain';
+import DefaultConfig from './config/config.default';
+ import UnitTestConfig from './config/config.unittest';
+ import * as staticFile from '@midwayjs/static-file';
 @Configuration({
   imports: [
     koa,
@@ -16,12 +18,16 @@ import * as crossDomain from '@midwayjs/cross-domain';
     orm,
     validate,
     crossDomain,
+    staticFile,
     {
       component: info,
       enabledEnvironment: ['local'],
     },
   ],
-  importConfigs: [join(__dirname, './config')],
+  importConfigs: [{
+ default: DefaultConfig,
+ unittest: UnitTestConfig
+ }],
 })
 export class MainConfiguration {
 
